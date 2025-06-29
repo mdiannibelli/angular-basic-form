@@ -1,1 +1,26 @@
-<p>navbar works!</p>,
+<div class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+      <a routerLink="/" class="btn btn-ghost text-xl">Angular Forms</a>
+    </div>
+    <div class="flex-none ">
+      <ul class="menu menu-horizontal items-center gap-x-4 px-1">
+        <li><a routerLink="/shop" routerLinkActive="bg-primary font-bold">Shop</a></li>
+        <li><a routerLink="/admin" routerLinkActive="bg-primary font-bold ">Admin</a></li>
+        <li><a routerLink="/configuration" routerLinkActive="bg-primary font-bold" >Configuration</a></li>
+        <li>
+          <details>
+            <summary>
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  class="size-8 rounded-full"
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            </summary>
+            <ul class="bg-base-100 rounded-t-none p-2">
+              <li><a>Profile</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </div>
+  </div>

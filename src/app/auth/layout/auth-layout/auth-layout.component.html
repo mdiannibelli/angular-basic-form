@@ -1,3 +1,9 @@
-<main>
-    <router-outlet/>
-</main>
+<div class="min-h-screen flex flex-col">
+  <auth-navbar />
+
+  <main class="flex-1 flex items-center justify-center">
+    <router-outlet />
+  </main>
+
+  <auth-footer />
+</div>

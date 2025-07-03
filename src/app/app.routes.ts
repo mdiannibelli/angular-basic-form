@@ -9,4 +9,8 @@ export const routes: Routes = [
     path: '',
     loadChildren: () => import('../app/shop/shop.routes'),
   },
+  {
+    path: '*',
+    redirectTo: 'auth',
+  },
 ];

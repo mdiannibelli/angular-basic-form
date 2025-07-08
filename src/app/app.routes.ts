@@ -10,7 +10,7 @@ export const routes: Routes = [
     loadChildren: () => import('../app/shop/shop.routes'),
   },
   {
-    path: '*',
+    path: '**',
     redirectTo: 'auth',
   },
 ];

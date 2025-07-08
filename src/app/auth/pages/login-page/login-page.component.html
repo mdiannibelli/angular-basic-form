@@ -1,4 +1,8 @@
-<form class="flex flex-col gap-2 p-2">
+<form
+  class="flex flex-col gap-2 p-2"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+>
   <h3 class="text-2xl font-bold mx-1">Login</h3>
   <p class="text-xs mx-1 mb-2">
     You don't have an account?
@@ -22,9 +26,14 @@
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
         </g>
       </svg>
-      <input type="email" placeholder="Email" />
+      <input type="email" placeholder="Email" formControlName="email" />
     </div>
   </label>
+  @if(formUtils.validField(loginForm, 'email')) {
+  <span class="text-red-500 text-xs">{{
+    formUtils.getFieldError(loginForm, "email")
+  }}</span>
+  }
   <label style="outline: none; border: none" class="input bg-black/50 py-6">
     <div class="flex items-center gap-x-2">
       <svg
@@ -45,9 +54,20 @@
           <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
         </g>
       </svg>
-      <input type="password" placeholder="Password" />
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
     </div>
   </label>
+  @if(formUtils.validField(loginForm, 'password')) {
+  <span class="text-red-500 text-xs">{{
+    formUtils.getFieldError(loginForm, "password")
+  }}</span>
+  }
+
+  <!-- <input type="text" placeholder="Hello world" #txtHello value="hello" /> -->
 
   <button
     type="submit"
@@ -55,4 +75,30 @@
   >
     Login
   </button>
+
+  <!-- USING RESOURCE -->
+  <!-- <div *ngIf="loginResource.isLoading()">Cargando...</div>
+  <div *ngIf="loginResource.error() as error">Error: {{ error }}</div>
+  <div *ngIf="loginResource.value() as data">
+    ¡Login exitoso! {{ data | json }}
+  </div> -->
+
+  @if (hasError()) {
+  <div role="alert" class="alert alert-warning animate-fadeIn">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 shrink-0 stroke-current"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+      />
+    </svg>
+    <span>Please enter valid fields!</span>
+  </div>
+  }
 </form>
